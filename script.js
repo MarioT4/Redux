@@ -8,6 +8,8 @@ let c = 10000000000000
 let v = 100000000000000
 let orbits = []; 
 let spheres = [];
+let angle = 45;
+let indicator = 0;
 let elements = {
   lithium: {
     protons:3,
@@ -18,6 +20,7 @@ let elements = {
 }
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
+  angleMode(DEGREES)
   //  createCanvas(windowWidth, windowHeight);
   _text = createGraphics(windowWidth, windowHeight);
   _text.textFont('Source Code Pro');
@@ -33,7 +36,7 @@ function setup() {
       w: e,
       h: 100,
       theta: 1,
-      speed: random() > 0.5 ? -random(0.02,0.06) : random(0.02,0.06),
+      speed: random() > .9 ? -random(0.06,0.1) : random(0.06,0.1),
       rotation: random(elements.lithium.range.min, elements.lithium.range.max)      
     }
     // spheres[i] = {
@@ -97,6 +100,7 @@ function draw() {
   // text('this is a model atom of Lithium', 10, 40)
   stroke('black')
   fill('blue')
+  if (indicator == 0) {
   for( let orbit of orbits ) {
     push();
     translate(width/270,height/80);
@@ -109,50 +113,9 @@ function draw() {
   }
 
 
-//   push();
-//   translate(width/270,height/80);
-//   rotate(orbit2.rotation)
-//   x = orbit2.w * cos(orbit2.theta);
-//   y = orbit2.h * sin(orbit2.theta);
-//   orbit2.theta -= s;
-//   circle(x,y,9);
-//   pop();  
-  
-//   push();
-//   translate(width/270,height/80);
-//   rotate(orbit3.rotation)
-//   x = orbit3.w * cos(orbit3.theta);
-//   y = orbit3.h * sin(orbit3.theta);
-//   orbit3.theta -= s;
-//   circle(x,y,9);
-//   pop(); 
- 
-//  push();
-//   translate(width/270,height/80);
-//   rotate(orbit4.rotation)
-//   x = orbit4.w * cos(orbit4.theta);
-//   y = orbit4.h * sin(orbit4.theta);
-//   orbit4.theta += d;
-//   circle(x,y,9);
-//   pop(); 
-//   fill('blue')
-//   push();
-//   translate(width/270,height/80);
-//   rotate(orbit5.rotation)
-//   x = orbit5.w * cos(orbit5.theta);
-//   y = orbit5.h * sin(orbit5.theta);
-//   orbit5.theta += d;
-//   circle(x,y,9);
-//   pop(); 
- 
-// push();
-//   translate(width/270,height/80);
-//   rotate(orbit6.rotation)
-//   x = orbit6.w * cos(orbit6.theta);
-//   y = orbit6.h * sin(orbit6.theta);
-//   orbit6.theta += d;
-//   circle(x,y,9);
-//   pop(); 
+
+
+//   
 
 fill('red')
   push();
@@ -189,6 +152,24 @@ fill('red')
   // sphere(11,8,8)
 
   pop();
+}
+
+  if (indicator == 1) {
+translate(width/280, height/80);
+rotate(angle);
+circle(0,0,40)
+for (let i = 0; i < 3; i++) {
+  noFill();
+  ellipse (0,0,80,240);
+  rotate(120);
+}
+for (let i = 0; i<3; i++) {
+  fill('black');
+  circle(40*cos(angle*5), 120*sin(angle*5), 20);
+  rotate(120);
+}
+angle +=1;
+}
 
 }
 
@@ -227,6 +208,14 @@ r= r*-1
   }
   if(key === "4") {
     r= r* 1.5
+  }
+  if(key === '1') {
+    indicator = 0;
+    redraw();
+  }
+  if (key === '2') {
+    indicator = 1;
+    redraw();
   }
   // if(key === "a") {
   //   q= q+1
