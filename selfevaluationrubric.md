@@ -1,6 +1,4 @@
-The main thin I learned over the course of this project was about arrays. Most of this project is arrays and for the revison I tried to make my own model atom. I also used a lot of for loops in this project. For my variables I feel like i didn't use them to much and they were just used for some interactivity. I dind't create my own function and only used some pretty basic ones but the use of indicators was a new thing. The conditionals I used were my key presses 1 and two switch between the two different atoms. I didn't use any objects that i know of in this project.
-Other changes that were made was cleaning up comented out work that didnt need to be there.
-Self Evaluation Rubric
+
 ======================
 
 ## Skills
